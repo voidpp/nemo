@@ -191,11 +191,12 @@ Makefile: Nemo.pro ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\win32-msvc2013\qm
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_pre.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\default_pre.prf \
+		qxtglobalshortcut5\qxt.pri \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\resolve_config.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds_post.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_post.prf \
-		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\rtti.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\c++11.prf \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\rtti.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\precompile_header.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\warn_on.prf \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\qt.prf \
@@ -212,6 +213,7 @@ Makefile: Nemo.pro ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\win32-msvc2013\qm
 		D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/qtmaind.prl \
 		D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Widgets.prl \
 		D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Gui.prl \
+		D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Network.prl \
 		D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-msvc2013 "CONFIG+=debug" -o Makefile Nemo.pro
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\spec_pre.prf:
@@ -332,11 +334,12 @@ Makefile: Nemo.pro ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\win32-msvc2013\qm
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_pre.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\default_pre.prf:
+qxtglobalshortcut5\qxt.pri:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\resolve_config.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds_post.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_post.prf:
-..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\rtti.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\c++11.prf:
+..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\rtti.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\precompile_header.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\warn_on.prf:
 ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\qt.prf:
@@ -353,6 +356,7 @@ Nemo.pro:
 D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/qtmaind.prl:
 D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Widgets.prl:
 D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Gui.prl:
+D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Network.prl:
 D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-msvc2013 "CONFIG+=debug" -o Makefile Nemo.pro

@@ -4,17 +4,25 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui widgets
 
 TARGET = Nemo
 TEMPLATE = app
 
+CONFIG += c++11
+
+include(qxtglobalshortcut5/qxt.pri)
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    config.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    config.h
 
 FORMS    += mainwindow.ui
+
+LIBS += -luser32
+
+RESOURCES += \
+    resources.qrc

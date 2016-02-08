@@ -1,0 +1,20 @@
+{
+    "device-server": {
+        "host": "some-host.lan",
+        "port": 52042,
+        "name": "lamp",
+        "outputs": {
+            "red": 6,
+            "green": 5,
+            "blue": 7
+        }
+    },
+    "colors": [{
+        "hotkey": "Shift+Meta+A",
+        "color": {
+            "red": 1042,
+            "green": 1042,
+            "blue": 1042
+        }
+    }]
+}
