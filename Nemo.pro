@@ -15,10 +15,12 @@ include(qxtglobalshortcut5/qxt.pri)
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    config.cpp
+    config.cpp \
+    filelogger.cpp
 
 HEADERS  += mainwindow.h \
-    config.h
+    config.h \
+    filelogger.h
 
 FORMS    += mainwindow.ui
 

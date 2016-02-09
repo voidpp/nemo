@@ -50,7 +50,8 @@ SOURCES       = qxtglobalshortcut5\core\qxtglobal.cpp \
 		qxtglobalshortcut5\gui\qxtglobalshortcut_win.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		config.cpp debug\qrc_resources.cpp \
+		config.cpp \
+		filelogger.cpp debug\qrc_resources.cpp \
 		debug\moc_qxtglobalshortcut.cpp \
 		debug\moc_mainwindow.cpp
 OBJECTS       = debug\qxtglobal.obj \
@@ -61,6 +62,7 @@ OBJECTS       = debug\qxtglobal.obj \
 		debug\main.obj \
 		debug\mainwindow.obj \
 		debug\config.obj \
+		debug\filelogger.obj \
 		debug\qrc_resources.obj \
 		debug\moc_qxtglobalshortcut.obj \
 		debug\moc_mainwindow.obj
@@ -70,14 +72,16 @@ DIST          =  qxtglobalshortcut5\core\qxtglobal.h \
 		qxtglobalshortcut5\gui\qxtglobalshortcut.h \
 		qxtglobalshortcut5\gui\qxtwindowsystem.h \
 		mainwindow.h \
-		config.h qxtglobalshortcut5\core\qxtglobal.cpp \
+		config.h \
+		filelogger.h qxtglobalshortcut5\core\qxtglobal.cpp \
 		qxtglobalshortcut5\gui\qxtwindowsystem.cpp \
 		qxtglobalshortcut5\gui\qxtglobalshortcut.cpp \
 		qxtglobalshortcut5\gui\qxtwindowsystem_win.cpp \
 		qxtglobalshortcut5\gui\qxtglobalshortcut_win.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		config.cpp
+		config.cpp \
+		filelogger.cpp
 QMAKE_TARGET  = Nemo
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = Nemo.exe
@@ -186,7 +190,7 @@ dist:
 	$(ZIP) Nemo.zip $(SOURCES) $(DIST) Nemo.pro ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\spec_pre.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\common\msvc-desktop.conf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\qconfig.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dquickrenderer.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3dquickrenderer_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3drenderer.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_3drenderer_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_clucene_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_declarative.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_declarative_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_enginio.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_enginio_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_location.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_platformsupport_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_script.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_script_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webengine.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webengine_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webenginecore.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webenginecore_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webenginewidgets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webkit.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webkit_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webkitwidgets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webkitwidgets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_webview_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\qt_functions.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\qt_config.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\qt_config.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\win32-msvc2013\qmake.conf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\spec_post.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_pre.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\default_pre.prf qxtglobalshortcut5\qxt.pri ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\resolve_config.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\default_post.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\build_pass.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\c++11.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\rtti.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\precompile_header.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\warn_on.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\qt.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\resources.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\moc.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\opengl.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\uic.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\win32\windows.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\testcase_targets.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\exceptions.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\yacc.prf ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\mkspecs\features\lex.prf Nemo.pro resources.qrc D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/qtmaind.prl D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Widgetsd.prl D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Guid.prl D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Networkd.prl D:/Qt/Qt5.5.0/5.5/msvc2013_64/lib/Qt5Cored.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\qxtglobal.obj debug\qxtwindowsystem.obj debug\qxtglobalshortcut.obj debug\qxtwindowsystem_win.obj debug\qxtglobalshortcut_win.obj debug\main.obj debug\mainwindow.obj debug\config.obj debug\qrc_resources.obj debug\moc_qxtglobalshortcut.obj debug\moc_mainwindow.obj
+	-$(DEL_FILE) debug\qxtglobal.obj debug\qxtwindowsystem.obj debug\qxtglobalshortcut.obj debug\qxtwindowsystem_win.obj debug\qxtglobalshortcut_win.obj debug\main.obj debug\mainwindow.obj debug\config.obj debug\filelogger.obj debug\qrc_resources.obj debug\moc_qxtglobalshortcut.obj debug\moc_mainwindow.obj
 	-$(DEL_FILE) debug\Nemo.exp debug\Nemo.ilk debug\Nemo.idb
 
 distclean: clean 
@@ -378,6 +382,26 @@ debug\moc_mainwindow.cpp: ..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qicon.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QNetworkAccessManager \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qnetworkaccessmanager.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QObject \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslConfiguration \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslconfiguration.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qtcpsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qabstractsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslerror.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslcertificate.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcryptographichash.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qssl.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFlags \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslPreSharedKeyAuthenticator \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslpresharedkeyauthenticator.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QtGlobal \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QString \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QSharedDataPointer \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QMetaType \
 		config.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QJsonObject \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qjsonobject.h \
@@ -906,6 +930,26 @@ debug\main.obj: main.cpp mainwindow.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qicon.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QNetworkAccessManager \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qnetworkaccessmanager.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QObject \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslConfiguration \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslconfiguration.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qtcpsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qabstractsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslerror.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslcertificate.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcryptographichash.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qssl.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFlags \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslPreSharedKeyAuthenticator \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslpresharedkeyauthenticator.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QtGlobal \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QString \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QSharedDataPointer \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QMetaType \
 		config.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QJsonObject \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qjsonobject.h \
@@ -917,7 +961,10 @@ debug\main.obj: main.cpp mainwindow.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qeventloop.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qguiapplication.h \
-		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qinputmethod.h
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qinputmethod.h \
+		filelogger.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFile \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QTextStream
 
 debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\QMainWindow \
@@ -1025,6 +1072,26 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\qicon.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QNetworkAccessManager \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qnetworkaccessmanager.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QObject \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslConfiguration \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslconfiguration.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qtcpsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qabstractsocket.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslerror.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslcertificate.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcryptographichash.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qssl.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFlags \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QSslPreSharedKeyAuthenticator \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qsslpresharedkeyauthenticator.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QtGlobal \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QString \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QSharedDataPointer \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QMetaType \
 		config.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QJsonObject \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qjsonobject.h \
@@ -1075,10 +1142,19 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QDir \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdir.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfileinfo.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\QMessageBox \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qmessagebox.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QJsonArray \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qjsonarray.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QUrl \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QNetworkReply \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qnetworkreply.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QIODevice \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\QNetworkRequest \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtNetwork\qnetworkrequest.h \
 		qxtglobalshortcut5/gui/qxtglobalshortcut.h \
 		qxtglobalshortcut5/core/qxtglobal.h \
-		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QtGlobal \
-		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QObject \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtGui\QKeySequence
 
 debug\config.obj: config.cpp config.h \
@@ -1159,6 +1235,80 @@ debug\config.obj: config.cpp config.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFile \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfile.h \
 		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfiledevice.h
+
+debug\filelogger.obj: filelogger.cpp filelogger.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QFile \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfile.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfiledevice.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qfeatures.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qtypetraits.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qflags.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_gcc.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_armv7.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_armv6.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_armv5.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_ia64.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_mips.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_x86.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qatomic_unix.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qobject.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qstring.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qchar.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qlist.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qregexp.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qisenum.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QString \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QTextStream \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qmap.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qpair.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qhash.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qvector.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qset.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\QDateTime \
+		..\..\..\Qt\Qt5.5.0\5.5\msvc2013_64\include\QtCore\qdatetime.h
 
 debug\qrc_resources.obj: debug\qrc_resources.cpp 
 
